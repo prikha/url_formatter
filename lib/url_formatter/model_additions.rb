@@ -14,7 +14,7 @@ module UrlFormatter
       before_validation do
         send("#{attribute}=", UrlFormatter.format_url(send(attribute)))
       end
-      validates_format_of attribute, with: UrlFormatter.url_regexp, message: "is not a valid URL"
+      validates_format_of attribute, with: UrlFormatter.url_regexp, message: I18n.t( "errors.messages.match_format", :name=>self.class.human_attribute_name(:web_site))
     end
   end
 end
